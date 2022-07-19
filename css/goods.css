@@ -37,9 +37,9 @@ h3 span {
 }
 
 .goods-cart {
-  width: 200px;
-  height: 350px;
-  margin: 15px 15px 15px 15px;
+  width: 150px;
+  height: 300px;
+  margin: 10px;
   background: #fff;
   float: left;
   text-align: center;
@@ -48,6 +48,7 @@ h3 span {
 
 .goods-cart img {
   margin-top: 30px;
+  width: 90%;
 }
 
 .goods-cart .goods-name {
