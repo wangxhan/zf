@@ -1,239 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/goods.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/goods.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <title>store</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-sm bg-light">
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">现货酒单</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="order.html">可预定酒单</a>
-            </li>
-        </ul>
-
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">现货酒单</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="order.html">可预定酒单</a>
+        </li>
+      </ul>
     </nav>
     <div class="container">
-        <h3><span> 现货酒单 </span>2022-07-19</h3>
-        <p>干邑、白兰地、威士忌、金酒、伏特加、朗姆酒、龙舌兰、利口酒、梅酒、清酒、干红、干白、啤酒...........</p>
-        <div class="goods-block">
-            <div id="list"></div>
-        </div>
-
+      <h3><span> 现货酒单 </span>2022-07-19</h3>
+      <p>
+        干邑、白兰地、威士忌、金酒、伏特加、朗姆酒、龙舌兰、利口酒、梅酒、清酒、干红、干白、啤酒...........
+      </p>
+      <div class="goods-block">
+        <div id="list"></div>
+      </div>
     </div>
-
-    <script>
-        var list = document.getElementById('list')
-
-        //数据
-        var data = [
-            { id: 10001, name: "人头马XO", en: "Rémy Martin XO", price: 998, stock: "TRUE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/L5hSbP7g/10001.jpg" },
-            { id: 10002, name: "人头马Club", en: "Rémy Martin Club", price: 575, stock: "TRUE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/TwtG00kX/10002.jpg" },
-            { id: 10003, name: "马爹利名仕", en: "Martell falseblige", price: 545, stock: "TRUE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/cL3xWQJQ/10003.jpg" },
-            { id: 10004, name: "轩尼诗VSOP", en: "Hennessy VSOP", price: 438, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/cHx0f2Bm/10004.jpg" },
-            { id: 10005, name: "卡洛斯一世", en: "Carlos I", price: 265, stock: "TRUE", category: "白兰地", origin: "西班牙", img: "https://i.postimg.cc/tgt9ZpWJ/10005.jpg" },
-            { id: 10006, name: "拿破仑大将军", en: "Drossarc Napoleon", price: 105, stock: "TRUE", category: "白兰地", origin: "法国", img: "https://i.postimg.cc/GprC1VVC/10006.jpg" },
-            { id: 10007, name: "人头马VSOP", en: "Rémy Martin VSOP", price: 395, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/qMSJWmpJ/10007.jpg" },
-            { id: 10008, name: "路易十三", en: "Louis XIII", price: 24500, stock: "FALSE", category: "干邑, 白兰地, 顶级", origin: "法国", img: "https://i.postimg.cc/TPXR3pyB/10008.jpg" },
-            { id: 10009, name: "马爹利鼎盛VSOP", en: "Martell Distinction VSOP", price: 335, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/1XTShthC/10009.jpg" },
-            { id: 10010, name: "马爹利蓝带XO", en: "Martell Cordon BLEU XO", price: 1150, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/dQSwTWk2/10010.jpg" },
-            { id: 10011, name: "马爹利XO", en: "Martell XO", price: 1580, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/qMh0c8y9/10011.jpg" },
-            { id: 10012, name: "轩尼诗XO", en: "Hennessy XO", price: 1520, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/fRYNpDHC/10012.jpg" },
-            { id: 10013, name: "轩尼诗新点", en: "Hennessy Classivm", price: 275, stock: "FALSE", category: "干邑, 白兰地", origin: "法国", img: "https://i.postimg.cc/fTGs8Jvk/10013.jpg" },
-            { id: 10014, name: "麦卡伦12年蓝钻", en: "Macclan 12YO Double Cask", price: 565, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/3wBHr9QD/10014.jpg" },
-            { id: 10015, name: "麦卡伦12年黄金三桶", en: "Macclan 12YO Triple Cask Matured", price: 488, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/02wRK9qv/10015.png" },
-            { id: 10016, name: "麦卡伦15年蓝钻", en: "Macclan 15YO Double Cask", price: 1350, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/xC1VXH9p/10016.jpg" },
-            { id: 10017, name: "大摩12年", en: "Dalmore 12YO", price: 475, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/FzftZ4dj/10017.jpg" },
-            { id: 10018, name: "大摩15年", en: "Dalmore 15YO", price: 885, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/k4Y3K44J/10018.jpg" },
-            { id: 10019, name: "大摩18年", en: "Dalmore 18YO", price: 1498, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/XqtR1zdt/10019.jpg" },
-            { id: 10020, name: "百富12年双桶", en: "Balvenie 12YO Double Wood", price: 578, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/44MR3mqw/10020.jpg" },
-            { id: 10021, name: "百富14年加勒比桶", en: "Balvenie 14YO Caribbean Cask", price: 658, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/1zyLd6VR/10021.png" },
-            { id: 10022, name: "百富17年双桶", en: "Balvenie 17YO Double Wood", price: 1350, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/CLkMTG5b/10022.png" },
-            { id: 10023, name: "波摩12年", en: "Bowmore 12YO", price: 298, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/W1cRMx2k/10023.jpg" },
-            { id: 10024, name: "波摩15年1升", en: "Bowmore 15YO (1L)", price: 585, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/4x6DwwdF/10024.jpg" },
-            { id: 10025, name: "波摩18年", en: "Bowmore 18YO", price: 850, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/vmXpwB5r/10025.png" },
-            { id: 10026, name: "格兰菲迪12年", en: "Glenfiddich 12YO", price: 295, stock: "TRUE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/1ttbmQKL/10026.jpg" },
-            { id: 10027, name: "格兰菲迪15年", en: "Glenfiddich 15YO", price: 335, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/qR5Sg5bg/10027.jpg" },
-            { id: 10028, name: "格兰菲迪18年", en: "Glenfiddich 18YO", price: 495, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/sxG8W4qm/10028.jpg" },
-            { id: 10029, name: "格兰威特12年", en: "Glenlivet 12YO", price: 238, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/tR1CDQHS/10029.jpg" },
-            { id: 10030, name: "格兰威特15年", en: "Glenlivet 15YO", price: 425, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/G90fxs1C/10030.jpg" },
-            { id: 10031, name: "格兰威特18年", en: "Glenlivet 18YO", price: 775, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/h4H45yDS/10031.jpg" },
-            { id: 10032, name: "格兰乐林斯佩塞", en: "Glenfairn Speyside", price: 298, stock: "TRUE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/9Q2mWDwK/10032.jpg" },
-            { id: 10033, name: "格兰乐林高地", en: "Glenfairn Highland", price: 298, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/g2KYrGvJ/10033.jpg" },
-            { id: 10034, name: "亚伯乐12年双桶", en: "Aberlour 12YO Double Cask", price: 315, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/8CKNBwXg/10034.jpg" },
-            { id: 10035, name: "乐加维林8年", en: "Lagavulin 8YO", price: 390, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/Gphby6Qj/10035.jpg" },
-            { id: 10036, name: "阿德贝哥10年", en: "Ardbeg 10YO", price: 410, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/vBCyCTdP/10036.jpg" },
-            { id: 10037, name: "阿德贝哥漩涡", en: "Ardbeg CORRYVRECKAN", price: 660, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/nzXZd7Nj/10037.jpg" },
-            { id: 10038, name: "格兰花格105原桶强60度", en: "Glenfarclas 105 Cask Strength", price: 485, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/90T222mc/10038.jpg" },
-            { id: 10039, name: "欧肯特轩12年", en: "Auchentoshan 12YO", price: 225, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/BQT3wJ7g/10039.jpg" },
-            { id: 10040, name: "劳伦斯爵士斯佩塞", en: "Sir Laurance Speyside", price: 155, stock: "TRUE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/fTnZKVCy/10040.jpg" },
-            { id: 10041, name: "泰斯卡风暴", en: "Talisker Storm", price: 229, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/8krNMRhx/10041.jpg" },
-            { id: 10042, name: "泰斯卡10年", en: "Talisker 10YO", price: 245, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/Hk3gdBg8/10042.jpg" },
-            { id: 10043, name: "泥煤怪兽原桶强52.1度", en: "Peat's Beast Cask Strength", price: 490, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/mgTsvK0G/10043.jpg" },
-            { id: 10044, name: "格兰莫雷斯佩塞", en: "Glenmoray Speyside", price: 229, stock: "FALSE", category: "单一麦芽, 威士忌", origin: "苏格兰", img: "https://i.postimg.cc/cJHNHwx9/10044.jpg" },
-            { id: 10045, name: "皇家礼炮21年", en: "Royal Salute 21YO", price: 785, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/5tRWFyjx/10045.jpg" },
-            { id: 10046, name: "尊尼获加金方", en: "Johnnie Walker Gold Label", price: 330, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/DZ4kQhb1/10046.jpg" },
-            { id: 10047, name: "尊尼获加黑方", en: "Johnnie Walker Black Label", price: 187, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/QCc2Pqmt/10047.jpg" },
-            { id: 10048, name: "尊尼获加红方", en: "Johnnie Walker Red Label", price: 89, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/sxFFwLpq/10048.jpg" },
-            { id: 10049, name: "芝华士18年", en: "Chivas Regal 18YO", price: 398, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/fWXQJwsN/10049.jpg" },
-            { id: 10050, name: "芝华士12年", en: "Chivas Regal 12YO", price: 189, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/TY6MbZ2W/10050.jpg" },
-            { id: 10051, name: "百龄坛12年", en: "Ballantine 12YO", price: 189, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/9FY3YJzg/10051.jpg" },
-            { id: 10052, name: "百龄坛精品", en: "Ballantine Finest", price: 89, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/Njs3JmHs/10052.jpg" },
-            { id: 10053, name: "三国", en: "THE MIKUNI", price: 198, stock: "FALSE", category: "威士忌, 调和", origin: "日本", img: "https://i.postimg.cc/y8LwwxmF/10053.jpg" },
-            { id: 10054, name: "三得利角瓶", en: "Suntory Whisky", price: 168, stock: "TRUE", category: "威士忌, 调和", origin: "日本", img: "https://i.postimg.cc/VsX2zD9s/10054.jpg" },
-            { id: 10055, name: "金铃", en: "Bell's Whisky", price: 69, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/s21tyzmb/10055.jpg" },
-            { id: 10056, name: "威雀", en: "The Famous Grouse", price: 85, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/mrqKgn6k/10056.jpg" },
-            { id: 10057, name: "高地女王雪莉桶", en: "Highland Queen Sherry Cask Finish", price: 105, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/W3kCF7Qn/10057.jpg" },
-            { id: 10058, name: "高地女王", en: "Highland Queen", price: 105, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/XqKPxYNB/10058.jpg" },
-            { id: 10059, name: "格兰特三桶", en: "Grant's Triple Wood", price: 79, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/hPrwdv3H/10059.jpg" },
-            { id: 10060, name: "螺旋桨", en: "Propeller", price: 69, stock: "FALSE", category: "威士忌, 调和", origin: "立陶宛", img: "https://i.postimg.cc/Rhx8cHmz/10060.jpg" },
-            { id: 10061, name: "四玫瑰小批量", en: "Four Roses Bourbon Small Batch", price: 345, stock: "FALSE", category: "威士忌, 波本", origin: "美国", img: "https://i.postimg.cc/Fsm8z3Gy/10061.jpg" },
-            { id: 10062, name: "金宾金标", en: "Jim Bean Gold Label", price: 198, stock: "FALSE", category: "威士忌, 波本", origin: "美国", img: "https://i.postimg.cc/8zzYBG2s/10062.jpg" },
-            { id: 10063, name: "金宾", en: "Jim Bean Bourbon", price: 78, stock: "TRUE", category: "威士忌, 波本", origin: "美国", img: "https://i.postimg.cc/mgp5mq4j/10063.jpg" },
-            { id: 10064, name: "杰克丹尼黑标", en: "Jack Daniel's false.7", price: 149, stock: "TRUE", category: "威士忌, 田纳西", origin: "美国", img: "https://i.postimg.cc/QMBnwbx3/10064.jpg" },
-            { id: 10065, name: "尊尼获加蓝方", en: "Johnnie Walker Blue Label", price: 988, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/brR6kVLQ/10065.jpg" },
-            { id: 10066, name: "尊尼获加绿方", en: "Johnnie Walker Green Label", price: 298, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/x8QxkVGf/10066.jpg" },
-            { id: 10067, name: "尊尼获加双黑", en: "Johnnie Walker Double Black Label", price: 215, stock: "TRUE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/J73YftmG/10067.jpg" },
-            { id: 10068, name: "四玫瑰", en: "Four Roses Bourbon", price: 128, stock: "FALSE", category: "威士忌, 波本", origin: "美国", img: "https://i.postimg.cc/kXnYq9Xw/10068.jpg" },
-            { id: 10069, name: "金宾黑麦", en: "Jim Bean Rye", price: 108, stock: "FALSE", category: "威士忌, 波本", origin: "美国", img: "https://i.postimg.cc/fTB2bFVs/10069.jpg" },
-            { id: 10070, name: "宝石蓝", en: "Bombay Sapphire London Dry Gin", price: 98, stock: "TRUE", category: "金酒", origin: "英国", img: "https://i.postimg.cc/wjMWRVNm/10070.jpg" },
-            { id: 10071, name: "必富达", en: "Beefeater London Dry Gin", price: 95, stock: "TRUE", category: "金酒", origin: "英国", img: "https://i.postimg.cc/MGhrSQvj/10071.jpg" },
-            { id: 10072, name: "哥顿", en: "Gordon's London Dry Gin", price: 69, stock: "TRUE", category: "金酒", origin: "英国", img: "https://i.postimg.cc/0QDX2ywX/10072.jpg" },
-            { id: 10073, name: "百加得白", en: "Bacardi Carta Blanca", price: 69, stock: "TRUE", category: "朗姆酒", origin: "波多黎各", img: "https://i.postimg.cc/PxsKcnRW/10073.jpg" },
-            { id: 10074, name: "混血姑娘金", en: "Mulata Palma", price: 55, stock: "FALSE", category: "朗姆酒", origin: "古巴", img: "https://i.postimg.cc/3wDnnxnr/10074.jpg" },
-            { id: 10075, name: "摩根船长黑", en: "Caption Morgan Dark", price: 75, stock: "FALSE", category: "朗姆酒", origin: "英国", img: "https://i.postimg.cc/sx3mj9y1/10075.jpg" },
-            { id: 10076, name: "马利宝椰子朗姆", en: "Malibu Rum with Coconut", price: 85, stock: "FALSE", category: "利口酒, 朗姆酒", origin: "西班牙", img: "https://i.postimg.cc/tT3DGvKL/10076.jpg" },
-            { id: 10077, name: "151烈性", en: "151 Rum", price: 95, stock: "TRUE", category: "朗姆酒", origin: "牙买加", img: "https://i.postimg.cc/RVsdmHYV/10077.jpg" },
-            { id: 10078, name: "高曼德银", en: "Ship Master Silver", price: 69, stock: "TRUE", category: "朗姆酒", origin: "牙买加", img: "https://i.postimg.cc/Vv4RdrLg/10078.jpg" },
-            { id: 10079, name: "斯米诺夫", en: "Smirfalseff Vodka", price: 59, stock: "TRUE", category: "伏特加", origin: "英国", img: "https://i.postimg.cc/kXXsLcfp/10079.jpg" },
-            { id: 10080, name: "奥美加金", en: "Olmeca Tequila Reposado", price: 89, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/y6Tnf5XR/10080.jpg" },
-            { id: 10081, name: "豪帅快活银", en: "Jose Cuervo Sliver", price: 85, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/L8GVYMRc/10081.jpg" },
-            { id: 10082, name: "野格", en: "Jgermeister", price: 109, stock: "TRUE", category: "利口酒", origin: "德国", img: "https://i.postimg.cc/6QRfC1py/10082.jpg" },
-            { id: 10083, name: "百利甜", en: "Baileys", price: 98, stock: "TRUE", category: "利口酒", origin: "爱尔兰", img: "https://i.postimg.cc/wvpc2c1F/10083.jpg" },
-            { id: 10084, name: "君度", en: "Contreau", price: 99, stock: "TRUE", category: "利口酒", origin: "法国", img: "https://i.postimg.cc/pVkYQjRY/10084.jpg" },
-            { id: 10085, name: "明石信威士忌梅酒", en: "Shin Whisky Umesh", price: 165, stock: "FALSE", category: "梅酒", origin: "日本", img: "https://i.postimg.cc/DZPQMJsh/10085.jpg" },
-            { id: 10086, name: "三得利梅酒", en: "Suntory Umeshu", price: 115, stock: "TRUE", category: "梅酒", origin: "日本", img: "https://i.postimg.cc/8ckdQpB6/10086.jpg" },
-            { id: 10087, name: "杰克丹尼传统", en: "Jack Daniel's Old false.7", price: 198, stock: "FALSE", category: "威士忌, 田纳西", origin: "美国", img: "https://i.postimg.cc/Xq2fnRQD/10087.jpg" },
-            { id: 10088, name: "百加得金", en: "Bacardi Carta Oro", price: 78, stock: "TRUE", category: "朗姆酒", origin: "波多黎各", img: "https://i.postimg.cc/m2D3mrrx/10088.jpg" },
-            { id: 10089, name: "百加得黑", en: "Bacardi Carta Negra", price: 85, stock: "TRUE", category: "朗姆酒", origin: "波多黎各", img: "https://i.postimg.cc/jSnHrkNZ/10089.jpg" },
-            { id: 10090, name: "混血姑娘银", en: "Mulata Silver", price: 49, stock: "FALSE", category: "朗姆酒", origin: "古巴", img: "https://i.postimg.cc/HLGQW49H/10090.jpg" },
-            { id: 10091, name: "摩根船长金", en: "Caption Morgan Gold", price: 79, stock: "FALSE", category: "朗姆酒", origin: "英国", img: "https://i.postimg.cc/DyMrHKWS/10091.jpg" },
-            { id: 10092, name: "摩根船长白", en: "Caption Morgan White", price: 65, stock: "FALSE", category: "朗姆酒", origin: "英国", img: "https://i.postimg.cc/pTRzzWS6/10092.jpg" },
-            { id: 10093, name: "哈瓦那俱乐部3年", en: "Havana Club 3 Afalses", price: 89, stock: "TRUE", category: "朗姆酒", origin: "古巴", img: "https://i.postimg.cc/KzfLNXSv/10093.jpg" },
-            { id: 10094, name: "绝对伏特加原味", en: "Absolut Vodka", price: 89, stock: "TRUE", category: "伏特加", origin: "瑞典", img: "https://i.postimg.cc/pr1FwDLw/10094.jpg" },
-            { id: 10095, name: "绝对伏特加青柠", en: "Absolut Lime", price: 95, stock: "FALSE", category: "伏特加", origin: "瑞典", img: "https://i.postimg.cc/g0v3xXgh/10095.jpg" },
-            { id: 10096, name: "绝对伏特加柠檬", en: "Absolut Citron", price: 95, stock: "FALSE", category: "伏特加", origin: "瑞典", img: "https://i.postimg.cc/7hLztBw1/10096.jpg" },
-            { id: 10097, name: "灰雁", en: "Grey Goose Vodka", price: 239, stock: "FALSE", category: "伏特加", origin: "法国", img: "https://i.postimg.cc/kMjKRdvT/10097.jpg" },
-            { id: 10098, name: "豪帅快活金", en: "Jose Cuervo Reposado", price: 85, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/gknRvBMm/10098.jpg" },
-            { id: 10099, name: "生命之水96%", en: "Spirytus 96%", price: 39, stock: "TRUE", category: "伏特加", origin: "波兰", img: "https://i.postimg.cc/xThmgy7H/10099.jpg" },
-            { id: 10100, name: "灵魂判官银", en: "KAH Tequila Blanco", price: 508, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/9Q97kw5k/10100.jpg" },
-            { id: 10101, name: "灵魂判官金", en: "KAH Tequila Reposado", price: 518, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/8CBrp8CB/10101.jpg" },
-            { id: 10102, name: "灵魂判官陈年", en: "KAH Tequila Anejo", price: 688, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/26kL3Hbp/10102.jpg" },
-            { id: 10103, name: "奥美加银", en: "Olmeca Tequila Sliver", price: 89, stock: "FALSE", category: "龙舌兰", origin: "墨西哥", img: "https://i.postimg.cc/L6Qy8WmX/10103.jpg" },
-            { id: 10104, name: "甘露咖啡酒（卡鲁瓦）", en: "Kahlua", price: 109, stock: "FALSE", category: "利口酒", origin: "墨西哥", img: "https://i.postimg.cc/g0PZbcG2/10104.jpg" },
-            { id: 10105, name: "明石信白兰地梅酒", en: "Shin Brandy Umesh", price: 165, stock: "FALSE", category: "梅酒", origin: "日本", img: "https://i.postimg.cc/mkhcyty8/10105.jpg" },
-            { id: 10106, name: "明石信红酒梅酒", en: "Shin Red Wine Umesh", price: 165, stock: "FALSE", category: "梅酒", origin: "日本", img: "https://i.postimg.cc/L6cqj4Y3/10106.jpg" },
-            { id: 10107, name: "百利甜草莓", en: "Baileys Strawberries & Cream", price: 165, stock: "FALSE", category: "利口酒", origin: "爱尔兰", img: "https://i.postimg.cc/fL8tdxmV/10107.jpg" },
-            { id: 10108, name: "美格", en: "Maker's Mark", price: 248, stock: "FALSE", category: "威士忌, 波本", origin: "美国", img: "https://i.postimg.cc/NGP2fkQV/10108.jpg" },
-            { id: 10109, name: "百龄坛17年", en: "Ballantine 17YO", price: 538, stock: "FALSE", category: "威士忌, 调和", origin: "苏格兰", img: "https://i.postimg.cc/WbFFDq34/10109.jpg" },
-            { id: 10110, name: "山崎1923", en: "Yamazaki 1923", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/yNPkqFfL/10110.jpg" },
-            { id: 10111, name: "山崎12年", en: "Yamazaki 12YO", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/s2yv0nJB/10111.jpg" },
-            { id: 10112, name: "山崎18年", en: "Yamazaki 18YO", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/rmwzqK3M/10112.jpg" },
-            { id: 10113, name: "白州无年份", en: "Hakushu", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/8zL748LQ/10113.jpg" },
-            { id: 10114, name: "白州12年", en: "Hakushu 12YO", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/brKv0LJw/10114.jpg" },
-            { id: 10115, name: "白州18年", en: "Hakushu 18YO", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/15qXRxCn/10115.jpg" },
-            { id: 10116, name: "知多", en: "Chita", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/VsT5csRP/10116.jpg" },
-            { id: 10117, name: "響和风醇韵", en: "Hibiki Japanese Harmony", price: "-", stock: "FALSE", category: "威士忌, 调和", origin: "日本", img: "https://i.postimg.cc/FRCzzhXc/10117.jpg" },
-            { id: 10118, name: "余市", en: "Yoichi", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/pLQd8ftP/10118.jpg" },
-            { id: 10119, name: "竹鹤", en: "Taketsuru", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/q7kvGNky/10119.jpg" },
-            { id: 10120, name: "宫城峡", en: "Miyagikyo", price: "-", stock: "FALSE", category: "单一麦芽, 威士忌", origin: "日本", img: "https://i.postimg.cc/W4XbYs3K/10120.jpg" },
-            { id: 10121, name: "一甲武士", en: "Nikka Gold & Gold", price: "-", stock: "FALSE", category: "威士忌, 调和", origin: "日本", img: "https://i.postimg.cc/rw2mKh3h/10121.jpg" },
-            { id: 20001, name: "酩悦香槟", en: "Moet&Chandon", price: 455, stock: "TRUE", category: "起泡酒, 香槟", origin: "法国", img: "https://i.postimg.cc/fy4LmBkT/20001.jpg" },
-            { id: 20002, name: "玛姆红带香槟", en: "G.H.Mumm", price: 425, stock: "TRUE", category: "起泡酒, 香槟", origin: "法国", img: "https://i.postimg.cc/ZnrqcpyP/20002.jpg" },
-            { id: 20003, name: "蓝蝴蝶", en: "Blue Butterfly", price: 240, stock: "TRUE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/HW5jdDPJ/20003.jpg" },
-            { id: 20004, name: "奔富麦克斯", en: "Penfolds Max's", price: 275, stock: "TRUE", category: "干红, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/BnZvT8ZD/20004.jpg" },
-            { id: 20005, name: "奔富麦Bin2", en: "Penfolds Bin2", price: 228, stock: "FALSE", category: "干红, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/PrQxvbHT/20005.jpg" },
-            { id: 20006, name: "奔富Bin8", en: "Penfolds Bin8", price: 275, stock: "TRUE", category: "干红, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/5tTNWnBq/20006.jpg" },
-            { id: 20007, name: "拉菲岩石古堡", en: "LAFITE Chateau Peyre-lebade", price: 198, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/BbGSXbwj/20007.jpg" },
-            { id: 20008, name: "拉菲岩珍藏", en: "LAFITE Reserve", price: 99, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/9FCX247S/20008.jpg" },
-            { id: 20009, name: "拉菲传说", en: "LAFITE Saga", price: 108, stock: "TRUE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/Y212TNhY/20009.jpg" },
-            { id: 20010, name: "拉菲传奇", en: "LAFITE Legende", price: 99, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/8znTLt0Q/20010.jpg" },
-            { id: 20011, name: "木桐嘉棣", en: "MOUTON CADET", price: 98, stock: "TRUE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/FR0m5msN/20011.jpg" },
-            { id: 20012, name: "云雾之湾长相思", en: "Cloudy Bay", price: 279, stock: "TRUE", category: "干白, 葡萄酒", origin: "新西兰", img: "https://i.postimg.cc/hvrBvrdY/20012.jpg" },
-            { id: 20013, name: "意大利之花", en: "Cavicchioli Love Sparkling", price: 95, stock: "TRUE", category: "起泡酒", origin: "意大利", img: "https://i.postimg.cc/CLh0t3yp/20013.jpg" },
-            { id: 20014, name: "桃乐丝公牛血干白", en: "Sangre de Toro Blanko", price: 108, stock: "FALSE", category: "干白, 葡萄酒", origin: "西班牙", img: "https://i.postimg.cc/GhXR1Xr8/20014.jpg" },
-            { id: 20015, name: "莫斯卡托甜白", en: "Racer Aussie", price: 49, stock: "TRUE", category: "甜白, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/3rC7tKcZ/20015.jpg" },
-            { id: 20016, name: "无醇气泡酒多口味", en: "falsen-alcohol Sparkling", price: 35, stock: "TRUE", category: "起泡酒", origin: "西班牙", img: "https://i.postimg.cc/zG3rDTXd/20016.jpg" },
-            { id: 20017, name: "雷司令干白", en: "Riesling Cuvee", price: 98, stock: "TRUE", category: "干白, 葡萄酒", origin: "德国", img: "https://i.postimg.cc/BvKfHsFH/20017.jpg" },
-            { id: 20018, name: "桃乐丝公牛血干红", en: "Sangre de Toro Original", price: 108, stock: "FALSE", category: "干红, 葡萄酒", origin: "西班牙", img: "https://i.postimg.cc/wjPd1319/20018.jpg" },
-            { id: 20019, name: "十字城堡", en: "Cross Castle", price: 35, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/mkTvvH5y/20019.jpg" },
-            { id: 20020, name: "罗斯富尔德", en: "Nance Gotha", price: 49, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/FRbtCZDK/20020.jpg" },
-            { id: 20021, name: "天鹅湖", en: "Lake Swan", price: 55, stock: "TRUE", category: "干红, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/gkSC7rq3/20021.jpg" },
-            { id: 20022, name: "五星庄袋鼠", en: "5 Star Kangaroo", price: 78, stock: "FALSE", category: "干红, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/ZYctrwW7/20022.jpg" },
-            { id: 20023, name: "城堡M2", en: "Wongem Chateau M2", price: 58, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/gJH5H02X/20023.png" },
-            { id: 20024, name: "鹿王", en: "Deer King", price: 55, stock: "TRUE", category: "干红, 葡萄酒", origin: "澳大利亚", img: "https://i.postimg.cc/wjnS6Prv/20024.jpg" },
-            { id: 20025, name: "卡苷诺", en: "Calerine Jade", price: 55, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/13VjYBzZ/20025.jpg" },
-            { id: 20026, name: "科里亚", en: "Palais Cloria", price: 45, stock: "FALSE", category: "干红, 葡萄酒", origin: "法国", img: "https://i.postimg.cc/7YH8jjZQ/20026.jpg" },
-            { id: 20027, name: "玛格卡纳", en: "Magcana", price: 59, stock: "TRUE", category: "干红, 葡萄酒", origin: "意大利", img: "https://i.postimg.cc/2yjtcf1H/20027.jpg" },
-            { id: 20101, name: "獭祭三九1.8L", en: "Dassai 39", price: 890, stock: "TRUE", category: "清酒", origin: "日本", img: "https://i.postimg.cc/g2hgK0Mz/20101.jpg" },
-            { id: 20102, name: "菊姬1.8L", en: "Kikuhimi", price: 495, stock: "TRUE", category: "清酒", origin: "日本", img: "https://i.postimg.cc/gJsS6Bg3/20102.jpg" },
-            { id: 20103, name: "白鹤淡丽纯米（小瓶）", en: "-", price: 45, stock: "TRUE", category: "清酒", origin: "日本", img: "https://i.postimg.cc/vTmP7LKk/20103.jpg" },
-            { id: 20104, name: "泽之鹤发酵酒（小瓶）", en: "Sake Shushu", price: 35, stock: "TRUE", category: "清酒", origin: "日本", img: "https://i.postimg.cc/5ykssQd0/20104.jpg" },
-            { id: 20105, name: "清酒口杯多味", en: "-", price: 25, stock: "TRUE", category: "清酒", origin: "日本", img: "https://i.postimg.cc/KvRqRfBg/20105.jpg" },
-            { id: 30002, name: "大星大瓶(750ml*12瓶/件）", en: "Inedit Damm 750ml", price: 530, stock: "FALSE", category: "啤酒", origin: "西班牙", img: "https://i.postimg.cc/Jnd15KnB/30002.jpg" },
-            { id: 30003, name: "朝日生啤大桶(2L*4桶/件）", en: "Asahi 2L", price: 530, stock: "FALSE", category: "啤酒", origin: "日本", img: "https://i.postimg.cc/htbc5Kvn/30003.jpg" },
-            { id: 30004, name: "科罗娜原产(330ml*24瓶/件）", en: "Corona Extra", price: 190, stock: "TRUE", category: "啤酒", origin: "墨西哥", img: "https://i.postimg.cc/R0S4r2JH/30004.jpg" },
-            { id: 30005, name: "教士小麦(330ml*12/件）", en: "Franziskaner", price: 95, stock: "TRUE", category: "啤酒", origin: "德国", img: "https://i.postimg.cc/vBjsVBqr/30005.jpg" },
-            { id: 30006, name: "卡布奇纳窖藏(500ml*20/件）", en: "Kapuziner Kellerweizen", price: 380, stock: "FALSE", category: "啤酒", origin: "德国", img: "https://i.postimg.cc/L4Yq0ZpM/30006.jpg" },
-            { id: 30007, name: "时代淡色拉格(330ml*24/件", en: "Stella Artois", price: 190, stock: "FALSE", category: "啤酒", origin: "比利时", img: "https://i.postimg.cc/wxCtKTqR/30007.jpg" },
-            { id: 30008, name: "福佳白(330ml*24/件)", en: "Hoegaarden", price: 215, stock: "FALSE", category: "啤酒", origin: "比利时", img: "https://i.postimg.cc/KYpz0mpz/30008.jpg" },
-            { id: 30009, name: "健力士黑啤(500ml*24/件)", en: "Guinness", price: 270, stock: "TRUE", category: "啤酒", origin: "爱尔兰", img: "https://i.postimg.cc/XX66sP0X/30009.jpg" },
-            { id: 30010, name: "沃尔夫狼IPA(586ml*24/件）", en: "Volfas Engelman", price: 310, stock: "TRUE", category: "啤酒", origin: "爱沙尼亚", img: "https://i.postimg.cc/gjD1Bjpk/30010.jpg" },
-            { id: 30011, name: "进口精品啤酒(500ml*24听/件）", en: "Selected Beer 24 cans", price: 120, stock: "TRUE", category: "啤酒", origin: "德国", img: "https://i.postimg.cc/fRxRQxH6/30011.jpg" },
-            { id: 30012, name: "进口精品啤酒(500ml*24听/件）", en: "Selected Beer 24 cans", price: 120, stock: "TRUE", category: "啤酒", origin: "德国", img: "https://i.postimg.cc/bwXw56Rx/30012.jpg" },
-            { id: 30013, name: "进口精品啤酒(500ml*24听/件）", en: "Selected Beer 24 cans", price: 120, stock: "TRUE", category: "啤酒", origin: "德国", img: "https://i.postimg.cc/GhTpq0v3/30013.jpg" },
-            { id: 30014, name: "进口精品啤酒(500ml*24听/件）", en: "Selected Beer 24 cans", price: 120, stock: "TRUE", category: "啤酒", origin: "德国", img: "https://i.postimg.cc/RF0St2MB/30014.jpg" }
-        ]
-        //绘制单个div
-        function setDiv(item) {
-            var div = '<div class="goods-cart"> <img src='
-                + item.img
-                + ' alt=""> <p class="goods-name">'
-                + item.name
-                + '<br>'
-                + item.en
-                + '</p> <p class="cost"> ￥'
-                + item.price
-                + '</p> </div>'
-            return div
+    <script type="module">
+      var list = document.getElementById("list");
+      import { stockGoods } from "./js/data.js";
+      //绘制单个div
+      function setDiv(item) {
+        var div =
+          '<div class="goods-cart"> <img src=' +
+          item.img +
+          ' alt=""> <p class="goods-name">' +
+          item.name +
+          "<br>" +
+          item.en +
+          '</p> <p class="cost"> ￥' +
+          item.price +
+          "</p> </div>";
+        return div;
+      }
+      //循环加载到页面
+      function pushData() {
+        var html = "";
+        for (var i = 0; i < stockGoods.length; i++) {
+          html += setDiv(stockGoods[i]);
         }
-        //循环加载到页面
-        function pushData() {
-            var html = ''
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].stock === "TRUE") {
-                    html += setDiv(data[i])
-                }
+        list.innerHTML = html;
+      }
 
-            }
-            list.innerHTML = html
-        }
-
-        window.onload = pushData()
-
+      window.onload = pushData();
     </script>
-
-</body>
-
+  </body>
 </html>
