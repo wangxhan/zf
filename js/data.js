@@ -1661,9 +1661,9 @@ let data = [
     img: "https://i.postimg.cc/RF0St2MB/30014.jpg",
   },
 ];
-
+// filter 2 arrays from data
 let stockGoods = data.filter((item) => item.stock === "TRUE");
 let orderGoods = data.filter((item) => item.stock === "FALSE");
-// export default data;
+// export arrays
 export { stockGoods };
 export { orderGoods };
